@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bene Gesserit Quotes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .quote {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote" id="quote">Loading...</div>
+    <script>
+        const quotes = [
+            "I must not fear.\nFear is the mind-killer.\nFear is the little-death that brings total obliteration.\nI will face my fear.\nI will permit it to pass over me and through me.\nAnd when it has gone past I will turn the inner eye to see its path.\nWhere the fear has gone there will be nothing.\nOnly I will remain.",
+            "The desert is a test.\nThe desert is the place where the strong become stronger and the weak become weaker.\nI will endure.\nI will not yield to the harshness of the desert.\nThe desert is my teacher, my guide.\nI will learn from the desert and become greater.",
+            "I must not let the uncertainty of learning overcome me.\nI will seek knowledge with determination.\nUncertainty is the path to understanding.\nI will embrace the unknown as an opportunity to grow.\nThrough learning, I will gain clarity.",
+            "Power is a tool, a weapon. It is not an end in itself. It must be wielded with discipline and purpose.\nThe Bene Gesserit understand that true power lies in control, not in domination.",
+            "The eyes are the windows to the soul. Watch them carefully and you will see what is hidden from others.\nObservation is the key to understanding and mastering those around you.",
+            "Manipulation is an art. It requires patience and subtlety. To influence others, you must first understand their desires and fears.",
+            "Training is not just physical but mental. To control the body, you must first master the mind.\nThe Bene Gesserit are trained in the art of control, both of themselves and of others.",
+            "The Missionaria Protectiva is a tool for shaping societies to our advantage. By implanting beliefs and myths, we guide civilizations to our benefit.",
+            "The spice is the essence of life. It enhances abilities and extends life, but it also binds us to our destiny.\nTo harness the spice is to embrace the future it reveals.",
+            "The Bene Gesserit are the keepers of secrets, the preservers of knowledge. Their wisdom is a blend of ancient lore and practical experience.",
+            "Fear is the path to the unknown. Embrace it, and you will find the strength within.",
+            "To understand others, you must first understand yourself. The Bene Gesserit are masters of introspection and self-awareness.",
+            "Wisdom is the result of experience. The more you experience, the wiser you become.",
+            "Every action has a consequence. The Bene Gesserit know that even the smallest choices can have far-reaching effects.",
+            "The future is shaped by the choices we make today. The Bene Gesserit are adept at guiding decisions to align with their goals.",
+            "To control others, you must first control yourself. The Bene Gesserit train rigorously in self-discipline.",
+            "The power of the mind is vast. Harness it, and you can shape reality to your will.",
+            "In every situation, there is a key to success. The Bene Gesserit excel at finding and using this key.",
+            "The art of persuasion is subtle and profound. Master it, and you can lead others to your vision.",
+            "To achieve mastery, one must practice tirelessly. The Bene Gesserit are committed to endless refinement.",
+            "Knowledge is power, but wisdom is the key to using that power effectively.",
+            "The Bene Gesserit are the architects of their own destiny, shaping their future with deliberate actions.",
+            "Understanding the motivations of others is essential to influence. The Bene Gesserit excel in this art.",
+            "The strength of the Bene Gesserit lies in their ability to adapt and respond to ever-changing circumstances.",
+            "Every encounter is a lesson. The Bene Gesserit are always learning and evolving.",
+            "To lead effectively, one must listen intently. The Bene Gesserit are skilled listeners, gaining insights from every conversation.",
+            "The spice enhances perception and intuition. Use it wisely to gain deeper insights into the world.",
+            "Patience is a virtue. The Bene Gesserit understand that great results often require time and perseverance.",
+            "The mind is a powerful tool. Cultivate it, and you can achieve extraordinary feats.",
+            "Strategic thinking is essential for success. The Bene Gesserit plan meticulously, considering all possible outcomes.",
+            "Every decision is a step toward your goal. The Bene Gesserit are deliberate in their actions, ensuring each step is purposeful.",
+            "The power of suggestion can influence behavior subtly but profoundly. The Bene Gesserit use this power skillfully.",
+            "Mastery of language is crucial. The Bene Gesserit understand that words have the power to shape thoughts and actions.",
+            "Understanding the nature of power is key to wielding it effectively. The Bene Gesserit are adept at navigating power dynamics.",
+            "Every challenge is an opportunity for growth. The Bene Gesserit embrace challenges as chances to become stronger.",
+            "The Bene Gesserit use rituals and traditions to reinforce their values and goals, creating a cohesive and disciplined group.",
+            "Control over one's emotions is crucial. The Bene Gesserit practice emotional regulation to maintain clarity and focus.",
+            "The art of deception is a tool for achieving objectives. The Bene Gesserit use deception strategically to advance their goals.",
+            "To understand the world, one must study its intricacies. The Bene Gesserit are dedicated scholars of human behavior and society.",
+            "The spice is both a gift and a burden. Embrace its benefits while managing its challenges.",
+            "The Bene Gesserit cultivate resilience to navigate the uncertainties of life. Their training prepares them for any eventuality.",
+            "Strategic planning involves anticipating potential outcomes. The Bene Gesserit excel in forecasting and preparing for future scenarios.",
+            "In every interaction, there is an opportunity to gain insight. The Bene Gesserit are vigilant observers and learners.",
+            "The discipline of the mind is as important as physical training. The Bene Gesserit balance mental and physical development.",
+            "Mastery of oneself is the foundation of influence over others. The Bene Gesserit achieve this through rigorous self-control.",
+            "The Bene Gesserit are the custodians of ancient wisdom, blending tradition with innovation to achieve their objectives.",
+            "Understanding the deeper motivations behind actions is essential for effective manipulation. The Bene Gesserit are experts in this field.",
+            "Every choice has repercussions. The Bene Gesserit weigh their decisions carefully, considering the long-term impact.",
+            "The art of observation involves reading between the lines. The Bene Gesserit excel at interpreting subtle cues and signals.",
+            "The spice is a catalyst for transformation. The Bene Gesserit use it to enhance their abilities and achieve their goals.",
+            "Control over one's environment is a reflection of control over oneself. The Bene Gesserit master their surroundings through discipline.",
+            "Strategic alliances can be powerful tools. The Bene Gesserit form and manage alliances to further their objectives.",
+            "Knowledge of human nature is crucial for influence. The Bene Gesserit study and understand the complexities of human behavior.",
+            "Every lesson learned contributes to mastery. The Bene Gesserit value continuous learning and self-improvement.",
+            "The Bene Gesserit are skilled in the art of negotiation, using their knowledge and skills to achieve favorable outcomes.",
+            "The future is shaped by the present. The Bene Gesserit are mindful of their actions and decisions, knowing they influence their destiny.",
+            "Patience and precision are key to success. The Bene Gesserit practice these qualities to achieve their goals effectively.",
+            "To influence others, one must first understand their needs and desires. The Bene Gesserit excel in this understanding.",
+            "The spice enhances not only physical abilities but also mental capabilities. The Bene Gesserit harness its full potential.",
+            "Strategic thinking involves considering multiple perspectives. The Bene Gesserit analyze situations from various angles to devise effective strategies.",
+            "The art of leadership involves guiding others toward a shared vision. The Bene Gesserit lead with clarity and purpose.",
+            "Every interaction is a chance to learn. The Bene Gesserit approach each encounter with curiosity and openness.",
+            "The Bene Gesserit use their training to maintain control in high-pressure situations, ensuring they remain composed and effective.",
+            "Knowledge and wisdom are interwoven. The Bene Gesserit seek to acquire both, using them to navigate complex challenges.",
+            "Understanding the dynamics of power is essential for influence. The Bene Gesserit are adept at managing and leveraging power.",
+            "The spice is a key element in shaping the future. The Bene Gesserit use it to gain insights and achieve their objectives.",
+            "The Bene Gesserit are masters of adaptation, adjusting their strategies to fit changing circumstances and new information.",
+            "Discipline and self-control are foundational to the Bene Gesserit training. These qualities enable them to achieve their goals with precision.",
+            "Strategic foresight involves anticipating potential obstacles and planning accordingly. The Bene Gesserit excel in this aspect of strategy.",
+            "The power of the Bene Gesserit lies in their ability to influence and guide. They use their skills to shape outcomes and achieve their objectives."
+        ];
+
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = getRandomQuote();
+        });
+    </script>
+</body>
+</html>
